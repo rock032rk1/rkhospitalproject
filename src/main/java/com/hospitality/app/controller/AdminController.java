@@ -35,12 +35,12 @@ public class AdminController {
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 	
 	
-//	@GetMapping("/")
-//	public String getLoginRegist(Model model) {
-//		
-//		model.addAttribute("admindb", new Admin());
-//		return "login";
-//	}
+	@GetMapping("/")
+	public String getLoginRegist(Model model) {
+		
+		model.addAttribute("admindb", new Admin());
+		return "login";
+	}
 	
 	/*
 	 * @GetMapping("/") public String getLoginRegist(Model model) {
@@ -105,7 +105,8 @@ public class AdminController {
 					model.addAttribute("admin",a);
 					HttpSession ses=req.getSession();
 					ses.setAttribute("email", email);
-					return "adminprofile";
+//					return "adminprofile";
+					return "profile";
 				}else {
 					model.addAttribute("pass","**Password is incorrect");
 					return "login";
@@ -160,7 +161,8 @@ public class AdminController {
 		Admin a1=adm.findByEmail(email);
 		
 		model.addAttribute("admin", a1);
-		return "adminprofile";
+//		return "adminprofile";
+		return "profile";
 	}
 //	@GetMapping("/findPhoto")
 //	@ResponseBody
@@ -203,7 +205,8 @@ public class AdminController {
 		Admin alist=adminService.findByEmail(email);
 		model.addAttribute("admin",alist);
 		
-		return "adminprofile";
+//		return "adminprofile";
+		return "profile";
 	}
 	
 	
