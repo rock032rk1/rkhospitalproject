@@ -19,13 +19,13 @@ public class PatientController {
 	@Autowired
 	private PatientService patientService;
 	
-	@GetMapping("/")
-	public String getPatient(Model model) {
-		model.addAttribute("patient", new Patient());
-		
-		model.addAttribute("msg", "Patient Registration Form");
-		return "patientregist";
-	}
+//	@GetMapping("/")
+//	public String getPatient(Model model) {
+//		model.addAttribute("patient", new Patient());
+//		
+//		model.addAttribute("msg", "Patient Registration Form");
+//		return "patientregist";
+//	}
 	
 	@PostMapping("/save")
 	public String getRegist(Model model,Patient p) {

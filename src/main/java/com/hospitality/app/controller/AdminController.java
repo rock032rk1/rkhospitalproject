@@ -35,12 +35,12 @@ public class AdminController {
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 	
 	
-//	@GetMapping("/")
-//	public String getLoginRegist(Model model) {
-//		
-//		model.addAttribute("admindb", new Admin());
-//		return "login";
-//	}
+	@GetMapping("/")
+	public String getLoginRegist(Model model) {
+		
+		model.addAttribute("admindb", new Admin());
+		return "login1";
+	}
 	
 	/*
 	 * @GetMapping("/") public String getLoginRegist(Model model) {
@@ -85,7 +85,7 @@ public class AdminController {
 		a.setSavepath(savepath);
 		adminService.save(a);
 		
-		return "login";
+		return "login1";
 	}
 	
 	
@@ -105,19 +105,19 @@ public class AdminController {
 					model.addAttribute("admin",a);
 					HttpSession ses=req.getSession();
 					ses.setAttribute("email", email);
-					return "adminprofile";
+					return "profile";
 				}else {
 					model.addAttribute("pass","**Password is incorrect");
-					return "login";
+					return "login1";
 				}
 			}else {
 				model.addAttribute("email","**Email-Id is incorrect");
-				return "login";
+				return "login1";
 			}
 		}
 		else {
 			model.addAttribute("msg","**Email-Id and password is incorrect");
-			return "login";
+			return "login1";
 		}
 		
 	}
@@ -160,7 +160,7 @@ public class AdminController {
 		Admin a1=adm.findByEmail(email);
 		
 		model.addAttribute("admin", a1);
-		return "adminprofile";
+		return "profile";
 	}
 //	@GetMapping("/findPhoto")
 //	@ResponseBody
@@ -203,10 +203,25 @@ public class AdminController {
 		Admin alist=adminService.findByEmail(email);
 		model.addAttribute("admin",alist);
 		
-		return "adminprofile";
+		return "profile";
 	}
-	
-	
+	@GetMapping("/logout")
+	public String logout(HttpServletRequest req) {
+		
+		HttpSession ses=req.getSession();
+		ses.invalidate();
+		return "login1";
+	}
+	@GetMapping("/index")
+	public String getIndexPage() {
+		
+		return "index";
+	}
+	@GetMapping("/register")
+	public String getRegisterPage() {
+		
+		return "register";
+	}
 	
 	
 }
